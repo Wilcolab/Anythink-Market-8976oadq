@@ -94,7 +94,81 @@ describe('Arithmetic', function () {
     });
 
 // TODO: Challenge #1
- 
+ //Test the power function
+    describe('Power', function () {
+        it('raises a positive integer to a positive integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=2&operand2=3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 8 });
+                    done();
+                });
+        });
+        it('raises a positive integer to a negative integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=2&operand2=-3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 0.125 });
+                    done();
+                });
+        });
+        it('raises a negative integer to a positive integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=-2&operand2=3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: -8 });
+                    done();
+                });
+        });
+        it('raises a negative integer to a negative integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=-2&operand2=-3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: -0.125 });
+                    done();
+                });
+        });
+        it('raises a positive integer to zero power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=2&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 1 });
+                    done();
+                });
+        });
+        it('raises zero to a positive integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=0&operand2=3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 0 });
+                    done();
+                });
+        });
+        it('raises zero to a negative integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=0&operand2=-3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: null });
+                    done();
+                });
+        });
+        it('raises a floating point number to a positive integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=2.5&operand2=3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 15.625 });
+                    done();
+                });
+        });
+        it('raises a floating point number to a negative integer power', function (done) {
+            request.get('/arithmetic?operation=power&operand1=2.5&operand2=-3')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 0.064 });
+                    done();
+                });
+        });
+    }); // End Power
 
     describe('Multiplication', function () {
         it('multiplies two positive integers', function (done) {
@@ -145,7 +219,7 @@ describe('Arithmetic', function () {
                     done();
                 });
         });
-    });
+    }); // End Multiplication
 
     describe('Division', function () {
         it('divides a positive integer by an integer factor ', function (done) {
@@ -204,5 +278,5 @@ describe('Arithmetic', function () {
                     done();
                 });
         });
-    });
-});
+    }); // End Division
+}); // End Arithmetic
