@@ -59,7 +59,7 @@ To run the Node.js server using Docker:
   docker compose up
   ```
 
-- The Node.js server will be available at port `3000`.
+- The Node.js server will be available at port `8001`.
 
 ### API Routes
 
