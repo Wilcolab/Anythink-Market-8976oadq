@@ -1,3 +1,34 @@
+/**
+ * Simple Express server for managing a list of tasks.
+ * 
+ * Endpoints:
+ * - GET /: Returns a "Hello World" message.
+ * - GET /tasks: Returns the current list of tasks.
+ * - POST /tasks: Adds a new task to the list.
+ * 
+ * @module server
+ * @requires express
+ * 
+ * @constant {number} PORT - The port number the server listens on.
+ * @constant {Array<string>} tasks - The in-memory list of tasks.
+ * 
+ * @function
+ * @name GET /
+ * @description Responds with "Hello World".
+ * 
+ * @function
+ * @name GET /tasks
+ * @description Responds with the current list of tasks.
+ * @returns {Object} 200 - An object containing the tasks array.
+ * 
+ * @function
+ * @name POST /tasks
+ * @description Adds a new task to the list.
+ * @param {Object} req.body - The request body.
+ * @param {string} req.body.text - The text of the new task.
+ * @returns {Object} 200 - Success message if task is added.
+ * @returns {Object} 400 - Error message if input is invalid.
+ */
 const express = require('express');
 const app = express();
 
